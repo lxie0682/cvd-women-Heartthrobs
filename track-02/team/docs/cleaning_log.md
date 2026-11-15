@@ -11,5 +11,7 @@ Written by `01_cleaning.ipynb`. Rerun the notebook to update it.
 | D1 | Require systolic BP above diastolic BP | Equal or reversed pairs cannot be reliably corrected from this file. | 44,961 | 44,764 | 197 |
 | D1 | Flag remaining BP extremes for review | Flagged 37 rows; retained all pending review. Review thresholds in mmHg: systolic <70 or >250, diastolic <40 or >150. | 44,764 | 44,764 | 0 |
 | D1 | Retain rows regardless of height and weight | The primary models use age, blood pressure and cholesterol. | 44,764 | 44,764 | 0 |
-| D1 | Set BP eligibility for the primary analysis | 44,727 eligible. Retained 37 flagged records in the CSV for sensitivity analysis. Primary BP bounds are 70–250 mmHg systolic and 40–150 mmHg diastolic, inclusive, with systolic above diastolic. | 44,764 | 44,764 | 0 |
+| D1 | Set BP eligibility for the primary analysis | 44,727 eligible. Retained 37 flagged records in the CSV for sensitivity analysis. Primary BP bounds are 70-250 mmHg systolic and 40-150 mmHg diastolic, inclusive, with systolic above diastolic. | 44,764 | 44,764 | 0 |
 | D1 | Derive age, BMI, cholesterol labels and glucose labels | Age in years = age in days / 365.25. BMI = weight in kg / height in metres squared. Cholesterol and glucose codes 1, 2, 3 map to normal, above normal, well above normal. Height and weight extremes were retained; BMI is unused in the primary analysis. | 44,764 | 44,764 | 0 |
+
+Summary: 45,530 women in the raw file; 766 removed outright (15 + 554 + 197); 37 more flagged and set aside for the primary analysis; 44,727 records in the primary cohort (the 37 are restored in a sensitivity analysis).
