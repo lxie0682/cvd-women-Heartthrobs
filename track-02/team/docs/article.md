@@ -54,15 +54,15 @@ The share rises with every measurement, and the systolic curve climbs steeply an
 
 ### The main result: the measurements add less for the oldest women
 
-Figure 1 shows the scores and Figure 4 shows the gain in each age group. Adding blood pressure and cholesterol lifts the AUC:
+Figure 1 and Figure 4 show the scores and the gain in each age group. Adding blood pressure and cholesterol lifts the AUC:
 
 - from 0.585 to 0.835 for women under 45, a gain of 0.251 (95% confidence interval 0.211 to 0.293)
 - from 0.549 to 0.786 for women 45 to 54, a gain of 0.236 (0.215 to 0.258)
 - from 0.575 to 0.728 for women 55 and older, a gain of 0.153 (0.133 to 0.173)
 
-![Horizontal bar chart of the change in held-out AUC from adding blood pressure and cholesterol: about 0.25 for women under 45, about 0.24 for women 45 to under 55 and about 0.15 for women 55 and older.](../figures/lu_fig4_auc_gain.png)
+![Grouped bar chart of held-out AUC by age group. Age alone scores 0.585 under 45, 0.549 at 45 to 54 and 0.575 at 55 and older. Adding blood pressure and cholesterol raises these to 0.835, 0.786 and 0.728, with 95 percent confidence intervals on every bar and on each gain.](../figures/headline_bargraph.png)
 
-*Figure 4 (by Lu). Change in held-out AUC from the age-only model to the model with blood pressure and cholesterol, by age group. Confidence intervals for these gains are in the text and in Figure 1.*
+*Figure 4. Held-out AUC for the age-only model and the model with blood pressure and cholesterol, by age group. Error bars and the gain intervals shown on each pair are 95% confidence intervals from 2,000 paired bootstrap resamples.*
 
 A gain of 0.25 means that out of every 100 pairs of records, one labeled and one not, the model now ranks about 25 more in the right order.
 
