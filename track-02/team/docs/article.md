@@ -146,7 +146,7 @@ Putting the 37 set-aside blood pressure records back changed no gain by more tha
 
 ## Acknowledgements
 
-We thank the Harvard Undergraduate OpenBio organizers for the data package, starter notebooks and guidance, and the Harvard Undergraduate Data Project for the article guide this piece follows. We used Claude (Anthropic) to help write analysis code and draft this article; the team checked every number against the data.
+We thank the Harvard Undergraduate OpenBio organizers for the data package, starter notebooks and guidance, and the Harvard Undergraduate Data Project for the article guide this piece follows.
 
 ---
 
