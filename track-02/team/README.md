@@ -37,7 +37,8 @@ Among records coded as women in the OpenBio Cardiovascular Disease Dataset, how 
 | `notebooks/01_cleaning.ipynb` | Loads and cleans the data, writes the cleaning log |
 | `notebooks/02_analysis.ipynb` | Summary statistics, models, checks and the headline visual |
 | `src/article_analysis.py` | **Article analysis.** One script (the code behind `docs/article.md`) that reproduces every number, table and figure in the article, including the sensitivity checks, calibration and odds ratios that go beyond `02_analysis.ipynb`. Start here to check any figure in the article |
-| `figures/` | Exported graphs, including `headline.png` |
+| `src/headline_bargraph.py` | Makes Figure 4 (held-out AUC bars by age group) |
+| `figures/` | The six article figures (`headline.png`, `02_cvd_by_age.png`, `03_measurement_associations.png`, `headline_bargraph.png`, `06_regression_forest.png`, `08_sensitivity.png`) plus supporting graphs |
 | `docs/cleaning_log.md` | Each cleaning rule and the records affected |
 | `docs/article.md` | Science communication article, following the [HUDP article guide](../../docs/article-guide.md) |
 | `requirements.txt` | Python packages |
