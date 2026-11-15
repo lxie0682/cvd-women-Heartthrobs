@@ -44,7 +44,7 @@ Among records coded as women in the OpenBio Cardiovascular Disease Dataset, how 
 
 ## Key Findings
 
-In 44,727 records coded as women, adding blood pressure and cholesterol to age improved held-out AUC by 0.25 (95% CI 0.21 to 0.29) under 45, 0.24 (0.22 to 0.26) at 45 to 54 and 0.15 (0.13 to 0.17) at 55 and older. The gain was larger under 45 than at 55 and older (difference 0.10, 95% CI 0.05 to 0.15), and 45 to 54 also exceeded 55 and older (0.08, 0.05 to 0.11). The gain under 45 versus 45 to 54 did not differ clearly (0.01, -0.03 to 0.06). The result held across sensitivity analyses (flexible curves, alternative cleaning rules, cross-validation, alternative age bands).
+In 44,727 records coded as women, adding blood pressure and cholesterol to age improved held-out AUC by 0.25 (95% CI 0.21 to 0.29) under 45, 0.24 (0.21 to 0.26) at 45 to 54 and 0.15 (0.13 to 0.17) at 55 and older. The gain was larger under 45 than at 55 and older (difference 0.10, 95% CI 0.05 to 0.15), and 45 to 54 also exceeded 55 and older (0.08, 0.05 to 0.11). The gain under 45 versus 45 to 54 did not differ clearly (0.01, -0.03 to 0.06). The result held across sensitivity analyses (flexible curves, alternative cleaning rules, cross-validation, alternative age bands).
 
 ## Limitations
 
