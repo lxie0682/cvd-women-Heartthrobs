@@ -32,9 +32,9 @@ We used the [Cardiovascular Disease Dataset](https://www.kaggle.com/datasets/sul
 
 The older the women in the file, the more of their records carry a CVD label.
 
-![Bar chart of the share of women with recorded cardiovascular disease in three age groups: 27.8 percent under 45, 43.5 percent at 45 to under 55 and 61.0 percent at 55 and older.](../figures/lu_fig1_age_trend.png)
+![Bar chart of the share of women with recorded cardiovascular disease in three age groups: 27.8 percent under 45, 43.5 percent at 45 to under 55 and 61.0 percent at 55 and older.](../figures/02_cvd_by_age.png)
 
-*Figure 2. Share of records with recorded CVD in each age group: 1,743 of 6,263 women under 45 (27.8%), 7,952 of 18,273 at 45 to 54 (43.5%) and 12,316 of 20,191 at 55 and older (61.0%). This is the share in this dataset, where about half of all records carry the label. It is not the rate of CVD among women in any population.*
+*Figure 2. Share of records with recorded CVD in each age group: 1,743 of 6,263 women under 45 (27.8%), 7,952 of 18,273 at 45 to 54 (43.5%) and 12,316 of 20,191 at 55 and older (61.0%). This is the share in this dataset, where about half of all records carry the label. It is not the rate of CVD among women in any population. Bars are 95% Wilson confidence intervals.*
 
 This is why age alone makes a model look capable. Across all women, a model that knows nothing but age ranks a labeled record above an unlabeled one 65% of the time. That measure is called the AUC: pick one record with the label and one without, at random, and the AUC is how often the model gives the higher score to the one with the label. A coin flip scores 0.5.
 
@@ -42,13 +42,13 @@ But compare women of similar age and the advantage nearly vanishes. Inside our t
 
 ### At normal blood pressure, age matters a lot; at high blood pressure, it hardly does
 
-Before any modeling, the raw patterns already hint at the answer. The top of Figure 3 summarizes the 44,727 records we kept; the four plots below it show how the share of records with a CVD label changes with age, systolic pressure, diastolic pressure and cholesterol.
+Before any modeling, the raw patterns already hint at the answer. Figure 3 shows how the share of records with a CVD label changes with cholesterol category (left) and systolic pressure (right), drawn separately for each age group.
 
-![A summary table of the 44,727 records above four plots. The share of records with recorded cardiovascular disease rises with age, rises steeply with systolic and diastolic blood pressure and then levels off, and rises with each step up in cholesterol category.](../figures/lu_fig2_summary_and_trends.png)
+![Two line panels with one line per age group. The share of records with recorded cardiovascular disease rises with each step up in cholesterol category and rises steeply with systolic pressure, then levels off near 85 percent above 140 mmHg in every age group. At lower pressures the oldest group has far more labeled records.](../figures/03_measurement_associations.png)
 
-*Figure 3. Summary statistics for the 44,727 records kept for analysis (top) and the share of records with recorded CVD by age, systolic pressure (`ap_hi`), diastolic pressure (`ap_lo`) and cholesterol level (bottom). Blood pressure points are group averages. These are associations in exam records and do not show that either measurement causes CVD.*
+*Figure 3. Share of the 44,727 records with recorded CVD by cholesterol category (left) and systolic pressure band (right), for each age group. Bars are 95% Wilson confidence intervals. Pressure bands are for display only; the models use the measured value. These are associations in exam records and do not show that either measurement causes CVD.*
 
-The share rises with every measurement, and the systolic curve climbs steeply and then flattens above about 140. Splitting the same records by age group (`outputs/` tables) shows why that matters. At a systolic pressure under 120, 11% of records from women under 45 carry the label, against 37% for women 55 and older. From 140 upward the three age groups converge: 83% to 87% at every age.
+The share rises with every step up in cholesterol and systolic pressure, and the systolic curve climbs steeply and then flattens above about 140. The age split in Figure 3 shows why that matters. At a systolic pressure under 120, 11% of records from women under 45 carry the label, against 37% for women 55 and older. From 140 upward the three age groups converge: 83% to 87% at every age.
 
 **Among records with a systolic pressure of 140 or more, the share labeled is similar at every age. Below 120, the share differs a lot by age.** For the youngest women, blood pressure sorts records cleanly into "rarely labeled" and "usually labeled." For the oldest, many records are labeled even when the reading is normal.
 
@@ -80,13 +80,13 @@ Nearly all of the gain comes from blood pressure. Blood pressure alone reaches a
 
 An AUC describes a whole model. An odds ratio describes one variable: how much the odds of carrying the label rise with it, holding the others fixed. An odds ratio of 1 means no association, and 2 means twice the odds.
 
-![Odds ratio plot with 95 percent confidence intervals. Cholesterol well above normal is about 2.7 and above normal about 1.5; age in years, systolic pressure and diastolic pressure are each close to 1 per unit.](../figures/lu_fig3_odds_ratios.png)
+![Two odds ratio panels with 95 percent confidence intervals. Left, all women: cholesterol well above normal is 2.69, systolic pressure per 10 mmHg is 1.77, cholesterol above normal is 1.46, age per 5 years is 1.32 and diastolic pressure per 10 mmHg is 1.13. Right, by age group: every odds ratio is largest under 45 and smallest at 55 and older.](../figures/06_regression_forest.png)
 
-*Figure 5. Odds ratios for recorded CVD from logistic regression on all 44,727 records, each adjusted for the other variables shown. Age and blood pressure are per year and per mmHg, so their dots sit close to 1; the cholesterol categories are compared with normal. Bars are 95% confidence intervals. These are associations, not causal effects.*
+*Figure 5. Odds ratios for recorded CVD from logistic regression, each adjusted for the other variables shown. Left: all 44,727 records. Right: the same model fitted separately within each age group (exploratory). Cholesterol categories are compared with normal; the horizontal axis is on a log scale. Bars are 95% confidence intervals. These are associations, not causal effects.*
 
-Across all women, cholesterol "well above normal" went with 2.69 times the odds of recorded CVD compared with normal cholesterol (95% confidence interval 2.50 to 2.90), after accounting for age and both blood pressure readings. Each additional 10 mmHg of systolic pressure went with 1.77 times the odds (1.73 to 1.81), which is the roughly 1.06 per mmHg that the figure shows.
+Across all women, cholesterol "well above normal" went with 2.69 times the odds of recorded CVD compared with normal cholesterol (95% confidence interval 2.50 to 2.90), after accounting for age and both blood pressure readings. Each additional 10 mmHg of systolic pressure went with 1.77 times the odds (1.73 to 1.81).
 
-Fitting the same model within each age group, an exploratory step we added after seeing the calibration result below, the systolic odds ratio per 10 mmHg was 2.36 under 45, 1.91 at 45 to 54 and 1.57 at 55 and older, and the three intervals do not overlap (`outputs/odds_ratios.csv`). It is the same finding in a different unit.
+The right panel fits the same model within each age group, an exploratory step we added after seeing the calibration result below. The systolic odds ratio per 10 mmHg was 2.36 under 45, 1.91 at 45 to 54 and 1.57 at 55 and older, and the three intervals do not overlap (`outputs/odds_ratios.csv`). It is the same finding in a different unit.
 
 ### An unexpected result: one model does not fit all ages
 
@@ -142,7 +142,7 @@ Putting the 37 set-aside blood pressure records back changed no gain by more tha
 - Full numerical results: [results_summary.md](results_summary.md). Cleaning rules and counts: [cleaning_log.md](cleaning_log.md).
 - Data: Ulianova S. [Cardiovascular Disease dataset](https://www.kaggle.com/datasets/sulianova/cardiovascular-disease-dataset). Kaggle, 2019, as distributed in the [OpenBio 2026 Datathon repository](https://github.com/Harvard-Undergraduate-OpenBio/openbio-datathon-2026). The records contain no names or other identifying details.
 - Sources cited: American Heart Association. [2026 Heart Disease and Stroke Statistics, fact sheet: Females and Cardiovascular Diseases](https://www.heart.org/-/media/PHD-Files-2/Science-News/2/2026-Heart-and-Stroke-Stat-Update/Translations/English/2026-Stats-Update-Fact-Sheet-US-Females-and-CVD_final.pdf?sc_lang=en). 2026. Jin X, et al. [Women's Participation in Cardiovascular Clinical Trials From 2010 to 2017](https://doi.org/10.1161/CIRCULATIONAHA.119.043594). Circulation. 2020. Hayes SN, et al. [Spontaneous Coronary Artery Dissection: Current State of the Science](https://doi.org/10.1161/CIR.0000000000000564). Circulation. 2018.
-- Tools: pandas, NumPy, statsmodels, scikit-learn, SciPy and matplotlib. All figures were made by the team: Figures 1 and 6 are generated by `track-02/team/src/article_analysis.py`, Figure 4 by `track-02/team/src/headline_bargraph.py` and Figures 2, 3 and 5 in the team notebooks.
+- Tools: pandas, NumPy, statsmodels, scikit-learn, SciPy and matplotlib. All figures were made by the team: Figures 1, 2, 3, 5 and 6 are generated by `track-02/team/src/article_analysis.py` and Figure 4 by `track-02/team/src/headline_bargraph.py`.
 
 ## Acknowledgements
 
