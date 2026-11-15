@@ -40,7 +40,7 @@ This is why age alone makes a model look capable. Across all women, a model that
 
 But compare women of similar age and the advantage nearly vanishes. Inside our three age groups, the age-only model scores 0.55 to 0.58, not far from a coin.
 
-### The same blood pressure means something different at 40 and at 60
+### At normal blood pressure, age matters a lot; at high blood pressure, it hardly does
 
 Before any modeling, the raw patterns already hint at the answer. The top of Figure 3 summarizes the 44,727 records we kept; the four plots below it show how the share of records with a CVD label changes with age, systolic pressure, diastolic pressure and cholesterol.
 
@@ -50,7 +50,7 @@ Before any modeling, the raw patterns already hint at the answer. The top of Fig
 
 The share rises with every measurement, and the systolic curve climbs steeply and then flattens above about 140. Splitting the same records by age group (`outputs/` tables) shows why that matters. At a systolic pressure under 120, 11% of records from women under 45 carry the label, against 37% for women 55 and older. From 140 upward the three age groups converge: 83% to 87% at every age.
 
-**At high blood pressure, age hardly matters. At normal blood pressure, it matters a lot.** For the youngest women, blood pressure sorts records cleanly into "rarely labeled" and "usually labeled." For the oldest, many records are labeled even when the reading is normal.
+**Among records with a systolic pressure of 140 or more, the share labeled is similar at every age. Below 120, the share differs a lot by age.** For the youngest women, blood pressure sorts records cleanly into "rarely labeled" and "usually labeled." For the oldest, many records are labeled even when the reading is normal.
 
 ### The main result: the measurements add less for the oldest women
 
@@ -72,7 +72,7 @@ Is the difference between age groups real, or could it be chance? Eyeballing thr
 - **45 to 54 versus 55 and older:** the gain is larger by 0.08 (0.05 to 0.11).
 - **Under 45 versus 45 to 54:** the difference is 0.01 (−0.03 to 0.06).
 
-The first two intervals stay clear of zero. The third straddles it, so **we do not claim the two younger groups differ.** What the data support is a step down at 55, not a steady decline with every birthday.
+The first two intervals stay clear of zero. The third straddles it, so **we do not claim the two younger groups differ.** What the data support is a smaller gain in the 55 and older group, not a steady decline with every birthday. Our age groups are modeling choices, so this is not evidence of a biological threshold at 55.
 
 Nearly all of the gain comes from blood pressure. Blood pressure alone reaches almost the same AUC as the full model, while cholesterol on its own adds 0.05 to 0.07. And when we gave the model everything else in the file (glucose, smoking, alcohol, physical activity and weight) the AUC rose by less than 0.01 in every age group. Whatever would help tell older women's records apart is not among the recorded variables.
 
