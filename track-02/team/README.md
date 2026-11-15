@@ -28,7 +28,7 @@ Among records coded as women in the OpenBio Cardiovascular Disease Dataset, how 
 1. The raw files are already in `track-02/data/` (see the [data guide](../data/README.md)). On Colab the first notebook cell downloads them.
 2. Install packages: `pip install -r requirements.txt`
 3. Run `notebooks/01_cleaning.ipynb`, then `notebooks/02_analysis.ipynb`, top to bottom.
-4. To regenerate every number, table and figure used in the article in one go, run `python track-02/team/src/article_analysis.py`. It uses the same split as `02_analysis.ipynb` (20% held out, random_state 42, stratified by age group and CVD label).
+4. To regenerate every number, table and figure used in the article in one go (the article analysis), run `python track-02/team/src/article_analysis.py`. `notebooks/02_analysis.ipynb` points to it in its first cell. It uses the same split as `02_analysis.ipynb` (20% held out, random_state 42, stratified by age group and CVD label).
 
 ## Files
 
@@ -36,7 +36,7 @@ Among records coded as women in the OpenBio Cardiovascular Disease Dataset, how 
 |---|---|
 | `notebooks/01_cleaning.ipynb` | Loads and cleans the data, writes the cleaning log |
 | `notebooks/02_analysis.ipynb` | Summary statistics, models, checks and the headline visual |
-| `src/article_analysis.py` | Reproduces every number and figure in the article, plus sensitivity analyses |
+| `src/article_analysis.py` | **Article analysis.** One script (the code behind `docs/article.md`) that reproduces every number, table and figure in the article, including the sensitivity checks, calibration and odds ratios that go beyond `02_analysis.ipynb`. Start here to check any figure in the article |
 | `figures/` | Exported graphs, including `headline.png` |
 | `docs/cleaning_log.md` | Each cleaning rule and the records affected |
 | `docs/article.md` | Science communication article, following the [HUDP article guide](../../docs/article-guide.md) |
